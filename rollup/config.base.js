@@ -1,6 +1,6 @@
 const alias = require(`rollup-plugin-alias`)
 const progress = require(`rollup-plugin-progress`)
-const babili = require(`rollup-plugin-babili`)
+const babili = require(`rollup-plugin-babel-minify`)
 const commonjs = require(`rollup-plugin-commonjs`)
 const cleanup = require(`rollup-plugin-cleanup`)
 const resolve = require(`rollup-plugin-node-resolve`)

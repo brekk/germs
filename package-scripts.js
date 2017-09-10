@@ -14,7 +14,7 @@ const filterSpecs = [
   `jayin "_.toPairs(x)`,
   `.map(([k, v]) => ([k,`,
   `_.map(v, (y) => y.indexOf('node_modules') > -1 ?`,
-  `'Ⓜ' + y.substr(y.indexOf('node_modules') + 13) :`,
+  `'Ⓜ ' + y.substr(y.indexOf('node_modules') + 13) :`,
   ` y)`,
   `]))`,
   `.filter(([k, v]) => !(k.indexOf('test-helpers') > -1))`,
@@ -68,7 +68,7 @@ module.exports = {
       }
     },
     readme: {
-      script: `documentation readme README.md -s "API" src/index.js`,
+      script: `documentation readme README.md -s "API" src/*/*.js`,
       description: `regenerate the readme`
     },
     lint: {
@@ -79,7 +79,7 @@ module.exports = {
         description: `lint js files`
       },
       jsdoc: {
-        script: `documentation lint src/index.js`,
+        script: `documentation lint src/*/*.js`,
         description: `lint jsdoc in files`
       }
     },
@@ -96,7 +96,7 @@ module.exports = {
     },
     docs: {
       description: `auto regen the docs`,
-      script: `documentation build src/** -f html -o docs -a private -a public -a protected`
+      script: `documentation build src/**/*.js -f html -o docs -a private -a public -a protected`
     },
     bundle: {
       description: `run the main bundle task`,
