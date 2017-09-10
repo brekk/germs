@@ -1,3 +1,4 @@
+const alias = require(`rollup-plugin-alias`)
 const progress = require(`rollup-plugin-progress`)
 const babili = require(`rollup-plugin-babili`)
 const commonjs = require(`rollup-plugin-commonjs`)
@@ -14,7 +15,6 @@ const external = (
 )
 // const {default: ts} = require(`rollup-plugin-ts`)
 // const typescript = require(`typescript`)
-// const rollupAlias = require(`rollup-plugin-alias`)
 // const tsconfig = require(`../tsconfig.json`)
 
 module.exports = {
@@ -22,8 +22,11 @@ module.exports = {
   external,
   globals: {
   },
-  moduleName: pkg.name,
+  name: pkg.name,
   plugins: [
+    alias({
+      [`@math`]: `./math`
+    }),
     progress(),
     json(),
     // rollupAlias({tslib: `node_modules/tslib/tslib.es6.js`}),

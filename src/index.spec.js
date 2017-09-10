@@ -1,6 +1,6 @@
 /* global test */
 import {t} from './test-helpers'
-import {add, subtract, divide, multiply} from './index'
+import {add, subtract, divide, multiply} from '@app'
 
 test(`add`, () => {
   t.plan(4)

@@ -41,7 +41,7 @@ module.exports = {
       },
       graph: {
         base: {
-          script: `madge src --json | ${filterSpecs} > base-graph.json`,
+          script: `madge src --json | ${filterSpecs} > dependency-graph.json`,
           desciption: `generate the base graph as a json file`
         },
         svg: {
@@ -100,7 +100,7 @@ module.exports = {
     },
     bundle: {
       description: `run the main bundle task`,
-      script: `rollup -c config/rollup.config.commonjs.js`
+      script: `rollup -c rollup/config.commonjs.js`
     },
     build: {
       description: `convert files individually`,

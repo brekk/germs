@@ -4,6 +4,13 @@
     "transform-object-rest-spread",
     "transform-es2015-destructuring",
     "transform-async-to-generator",
-    "syntax-async-functions"
+    "syntax-async-functions",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        ".": "@app",
+        "./math": "@math"
+      }
+    }]
   ]
 }
