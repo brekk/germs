@@ -1,7 +1,7 @@
-const pkg =- require('./pack.json')
+const pkg = require(`./package.json`)
 module.exports = function configureWallaby(wallaby) {
   return {
-    name: `germs`,
+    name: pkg.name,
     files: [
       `src/**/*.js`,
       `src/*.js`
@@ -21,10 +21,10 @@ module.exports = function configureWallaby(wallaby) {
       '**/*.js': wallaby.compilers.babel()
     },
 
-    testFramework: `ava`,
+    testFramework: `jest`,
 
     setup: function setupWallaby() {
-      require(`babel-polyfill`)
+      require(`babel-polyfill`) // eslint-disable-line fp/no-unused-expression
     },
 
     debug: true,

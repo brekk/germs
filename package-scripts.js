@@ -23,6 +23,8 @@ const filterSpecs = [
   `.reduce((agg, [k, v]) => Object.assign({}, agg, {[k]: v}), {})"`
 ].join(``)
 
+const DEPGRAPH = `dependency-graph.json`
+
 module.exports = {
   scripts: {
     dependencies: {
@@ -41,27 +43,27 @@ module.exports = {
       },
       graph: {
         base: {
-          script: `madge src --json | ${filterSpecs} > dependency-graph.json`,
+          script: `madge src --json | ${filterSpecs} > ${DEPGRAPH}`,
           desciption: `generate the base graph as a json file`
         },
         svg: {
           script: series(
             `nps dependencies.graph.base`,
-            `cat base-graph.json | madge --stdin --image dependencies.svg`
+            `cat ${DEPGRAPH} | madge --stdin --image dependencies.svg`
           ),
           description: `generate a visual dependency graph`
         },
         json: {
           script: series(
             `nps dependencies.graph.base`,
-            `cat base-graph.json | madge --stdin --json`
+            `cat ${DEPGRAPH} | madge --stdin --json`
           ),
           description: `generate a visual dependency graph in json`
         },
         dot: {
           script: series(
             `nps dependencies.graph.base`,
-            `cat base-graph.json | madge --stdin --dot`
+            `cat ${DEPGRAPH} | madge --stdin --dot`
           ),
           description: `generate a visual dependency graph in dot`
         }
