@@ -1,0 +1,27 @@
+{
+  "name": "germs-example-project",
+  "version": "1.0.0",
+  "description": "here's an example of how to use germs",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "nps test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brekk/germs.git"
+  },
+  "keywords": [
+    "germs",
+    "example",
+    "build"
+  ],
+  "author": "brekk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brekk/germs/issues"
+  },
+  "devDependencies": {
+    "germs": "^0.0.0"
+  },
+  "homepage": "https://github.com/brekk/germs#readme"
+}
