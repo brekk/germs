@@ -1,5 +1,3 @@
-import {curry} from 'katsu-curry'
-
 /**
  * add things
  * @method add
@@ -11,4 +9,4 @@ import {curry} from 'katsu-curry'
  * import {add} from 'f-utility'
  * add(4, 2) // 6
  */
-export const add = curry((a, b) => a + b)
+export const add = (a) => (b) => a + b

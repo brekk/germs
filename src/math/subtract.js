@@ -1,4 +1,3 @@
-import {curry} from 'katsu-curry'
 /**
  * subtract things
  * @method subtract
@@ -10,4 +9,4 @@ import {curry} from 'katsu-curry'
  * import {subtract} from 'f-utility'
  * subtract(4, 2) // -2
  */
-export const subtract = curry((a, b) => b - a)
+export const subtract = (a) => (b) => b - a

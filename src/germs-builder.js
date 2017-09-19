@@ -71,7 +71,7 @@ module.exports = (name, overrides = {}) => {
         }
       },
       readme: {
-        script: `documentation readme README.md -s "API" src/*/*.js`,
+        script: `documentation readme README.md -s "API" src/**.js`,
         description: `regenerate the readme`
       },
       lint: {
@@ -99,7 +99,11 @@ module.exports = (name, overrides = {}) => {
       },
       docs: {
         description: `auto regen the docs`,
-        script: `documentation build src/**/*.js -f html -o docs -a private -a public -a protected`
+        script: `documentation build src/**.js -f html -o docs -a private -a public -a protected`,
+        serve: {
+          description: `serve the documentation`,
+          script: `documentation serve src/**.js -a private -a public -a protected`
+        }
       },
       bundle: {
         description: `run the main bundle task`,

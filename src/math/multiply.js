@@ -1,5 +1,3 @@
-import {curry} from 'katsu-curry'
-
 /**
  * multiply things
  * @method multiply
@@ -11,4 +9,4 @@ import {curry} from 'katsu-curry'
  * import {multiply} from 'f-utility'
  * multiply(4, 2) // 8
  */
-export const multiply = curry((a, b) => a * b)
+export const multiply = (a) => (b) => a * b
