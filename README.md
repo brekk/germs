@@ -1,22 +1,32 @@
-      __ _  ___ _ __ _ __ ___  ___
-     / _` |/ _ \ '__| '_ ` _ \/ __|
-    | (_| |  __/ |  | | | | | \__ \
-     \__, |\___|_|  |_| |_| |_|___/
-     |___/                               
+[![npm](https://img.shields.io/npm/dw/germs.svg)](https://github.com/brekk/germs)
+[![npm](https://img.shields.io/npm/l/germs.svg)](https://www.npmjs.com/package/germs)
+[![npm](https://img.shields.io/github/tag/brekk/germs.svg)](https://github.com/brekk/germs)
+
+# germs
 
 an opinionated hack-space for building things fast without spending a bunch of time setting things up
 
-`germs` can be used in two different ways, either as a project template (there's some silly arithmetic and CLI stuff you can erase and replace with cool new stuff) or as a dependency to your module.
-
 ## Installation
 
-Installing `germs`:
+Installing `germs` as a dependency:
 
-`yarn install germs -D` or `npm i germs -D`
+`yarn install germs nps nps-utils -D` or `npm i germs nps nps-utils -D`
 
-Installing `nps` (a delightful build tool):
+Installing `nps` - a delightful build tool (optional but useful):
 
 `yarn install nps global` or `npm i nps -g`
+
+## Using germs
+
+Create a new file `package-scripts.js`, and place the following in it.
+
+```js
+const germs = require("germs")
+const {name} = require("./package.json")
+module.exports = germs(name)
+```
+
+Here's an example from `germs`'s specific [package-script.js file](https://github.com/brekk/germs/blob/master/package-scripts.js).
 
 ## Opinions
 
@@ -65,6 +75,8 @@ Installing `nps` (a delightful build tool):
 -   `nps precommit` - nps care
 
 #### Contributions welcome!
+
+`germs` is opinionated, but your opinions / contributions are welcome!
 
 #### Example API
 
@@ -125,78 +137,6 @@ multiply(4, 2) // 8
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** multiplied
 
 ##### subtract
-
-subtract things
-
-**Parameters**
-
--   `a` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a number
--   `b` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** b number
-
-**Examples**
-
-```javascript
-import {subtract} from 'f-utility'
-subtract(4, 2) // -2
-```
-
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** subtracted
-
-## add
-
-add things
-
-**Parameters**
-
--   `a` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a number
--   `b` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** b number
-
-**Examples**
-
-```javascript
-import {add} from 'f-utility'
-add(4, 2) // 6
-```
-
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** sum
-
-## divide
-
-divide things
-
-**Parameters**
-
--   `a` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a number
--   `b` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** b number
-
-**Examples**
-
-```javascript
-import {divide} from 'f-utility'
-divide(4, 2) // 0.5
-```
-
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** divided
-
-## multiply
-
-multiply things
-
-**Parameters**
-
--   `a` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a number
--   `b` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** b number
-
-**Examples**
-
-```javascript
-import {multiply} from 'f-utility'
-multiply(4, 2) // 8
-```
-
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** multiplied
-
-## subtract
 
 subtract things
 
