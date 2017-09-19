@@ -2006,9 +2006,9 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-documentation@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.1.tgz#f7fda4b65ad96b7686976173b0c573f53448ed3e"
+documentation@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.2.tgz#45a106cd58bcb74ec0446431e5777a063fab6731"
   dependencies:
     ansi-html "^0.0.7"
     babel-core "^6.17.0"

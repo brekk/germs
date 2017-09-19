@@ -20,13 +20,11 @@ Installing `nps` - a delightful build tool (optional but useful):
 
 Create a new file `package-scripts.js`, and place the following in it.
 
-```js
-const germs = require("germs")
-const {name} = require("./package.json")
-module.exports = germs(name)
-```
+    const germs = requⅰre("germs")
+    const {name} = requⅰre("package.json")
+    module.exports = germs(name)
 
-Here's an example from `germs`'s specific [package-script.js file](https://github.com/brekk/germs/blob/master/package-scripts.js).
+Here is an example from `germs` own specific [package-script.js file](https://github.com/brekk/germs/blob/master/package-scripts.js).
 
 ## Opinions
 
