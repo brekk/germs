@@ -73,7 +73,7 @@ export const germs = (name, overrides = {}) => {
         }
       },
       readme: {
-        script: `documentation readme README.md -s "API" src/**.js`,
+        script: `documentation readme -s "API" src/**.js`,
         description: `regenerate the readme`
       },
       lint: {
