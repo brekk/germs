@@ -1,10 +1,17 @@
 const {name} = require(`./package.json`)
-const bootstrap = require(`./lib/germs-builder`)
+const bootstrap = require(`./index`)
 
 module.exports = bootstrap(name, {
-  readme: {
-    // we want to have the underlying script run, but we override here so we don't have a math API
-    script: `echo "no API here!"`,
-    description: `regenerate the readme, normally, but this time, do nothing`
+  // we wanna skip the test-helpers coverage here, as it is not part of our base coverage
+  test: {
+    description: `run all tests with coverage`,
+    script: [
+      `jest src/*.spec.js --coverage`,
+      `--coveragePathIgnorePatterns test-helpers.js index.js ${name}.js node_modules/common-tags/*`
+    ].join(` `),
+    unit: {
+      description: `run unit tests`,
+      script: `jest src/*.spec.js`
+    }
   }
 })

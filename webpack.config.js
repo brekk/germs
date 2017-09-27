@@ -5,7 +5,7 @@ module.exports = {
       `${__dirname}/node_modules`
     ],
     alias: {
-      "@math": `${__dirname}/src/math`
+      "@tools": `${__dirname}/src/tools`
     }
   }
 }

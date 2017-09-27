@@ -1,5 +1,5 @@
 const pkg = require(`../package.json`)
-const {bundle} = require(`../lib/rollup`)
+const {bundle} = require(`../germs`)
 
 const external = (
   pkg && pkg.dependencies ?
@@ -10,7 +10,7 @@ const external = (
 module.exports = bundle({
   name: pkg.name,
   alias: {
-    [`@math`]: `./math`
+    [`@tools`]: `./tools`
   },
   external,
   input: `src/index.js`,

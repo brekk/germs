@@ -27,7 +27,7 @@ const DEPGRAPH = `dependency-graph.json`
 
 const madge = `madge --webpack-config webpack.config.js`
 
-module.exports = (name, overrides = {}) => {
+export const germs = (name, overrides = {}) => {
   const NPS_COMMANDS = {
     scripts: Object.assign({
       dependencies: {
@@ -90,10 +90,7 @@ module.exports = (name, overrides = {}) => {
       },
       test: {
         description: `run all tests with coverage`,
-        script: [
-          `jest src/*.spec.js --coverage`,
-          `--coveragePathIgnorePatterns test-helpers.js ${name}.js`
-        ].join(` `),
+        script: `jest src/*.spec.js --coverage ${name}.js`,
         unit: {
           description: `run unit tests`,
           script: `jest src/*.spec.js`
@@ -117,7 +114,7 @@ module.exports = (name, overrides = {}) => {
       },
       care: {
         description: `run all the things`,
-        script: allNPS(`lint`, `bundle`, `build`, `test`, `readme`, `dependencies`)
+        script: allNPS(`lint`, `build`, `bundle`, `test`, `readme`, `dependencies`)
       },
       precommit: `nps care`
     }, overrides)
