@@ -1,11 +1,21 @@
 const pkg = require(`../package.json`)
-const base = require(`./config.base`)
-/* eslint-disable fp/no-mutating-assign */
-module.exports = Object.assign({}, base, {
+const {bundle} = require(`../lib/rollup`)
+
+const external = (
+  pkg && pkg.dependencies ?
+    Object.keys(pkg.dependencies) :
+    []
+)
+
+module.exports = bundle({
+  name: pkg.name,
+  alias: {
+    [`@math`]: `./math`
+  },
+  external,
   input: `src/index.js`,
   output: {
     file: `./${pkg.name}.js`,
     format: `cjs`
   }
 })
-/* eslint-enable fp/no-mutating-assign */
