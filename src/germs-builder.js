@@ -25,6 +25,8 @@ const filterSpecs = (name) => ([
 
 const DEPGRAPH = `dependency-graph.json`
 
+const madge = `madge --webpack-config webpack.config.js`
+
 module.exports = (name, overrides = {}) => {
   const NPS_COMMANDS = {
     scripts: Object.assign({
@@ -44,27 +46,27 @@ module.exports = (name, overrides = {}) => {
         },
         graph: {
           base: {
-            script: `madge src --json | ${filterSpecs(name)} > ${DEPGRAPH}`,
+            script: `${madge} src --json | ${filterSpecs(name)} > ${DEPGRAPH}`,
             desciption: `generate the base graph as a json file`
           },
           svg: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --image dependencies.svg`
+              `cat ${DEPGRAPH} | ${madge} --stdin --image dependencies.svg`
             ),
             description: `generate a visual dependency graph`
           },
           json: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --json`
+              `cat ${DEPGRAPH} | ${madge} --stdin --json`
             ),
             description: `generate a visual dependency graph in json`
           },
           dot: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --dot`
+              `cat ${DEPGRAPH} | ${madge} --stdin --dot`
             ),
             description: `generate a visual dependency graph in dot`
           }
