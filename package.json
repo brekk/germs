@@ -1,6 +1,6 @@
 {
   "name": "germs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "an opinionated build toolset that is dead-simple so you can focus on writing code",
   "main": "index.js",
   "scripts": {
