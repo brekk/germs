@@ -9,7 +9,7 @@
       "root": ["."],
       "alias": {
         "@app": "./src/index.js",
-        "@math": "./src/math"
+        "@tools": "./src/tools"
       }
     }]
   ]

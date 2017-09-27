@@ -25,7 +25,9 @@ const filterSpecs = (name) => ([
 
 const DEPGRAPH = `dependency-graph.json`
 
-module.exports = (name, overrides = {}) => {
+const madge = `madge --webpack-config webpack.config.js`
+
+export const germs = (name, overrides = {}) => {
   const NPS_COMMANDS = {
     scripts: Object.assign({
       dependencies: {
@@ -44,34 +46,34 @@ module.exports = (name, overrides = {}) => {
         },
         graph: {
           base: {
-            script: `madge src --json | ${filterSpecs(name)} > ${DEPGRAPH}`,
+            script: `${madge} src --json | ${filterSpecs(name)} > ${DEPGRAPH}`,
             desciption: `generate the base graph as a json file`
           },
           svg: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --image dependencies.svg`
+              `cat ${DEPGRAPH} | ${madge} --stdin --image dependencies.svg`
             ),
             description: `generate a visual dependency graph`
           },
           json: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --json`
+              `cat ${DEPGRAPH} | ${madge} --stdin --json`
             ),
             description: `generate a visual dependency graph in json`
           },
           dot: {
             script: series(
               `nps dependencies.graph.base`,
-              `cat ${DEPGRAPH} | madge --stdin --dot`
+              `cat ${DEPGRAPH} | ${madge} --stdin --dot`
             ),
             description: `generate a visual dependency graph in dot`
           }
         }
       },
       readme: {
-        script: `documentation readme README.md -s "API" src/**.js`,
+        script: `documentation readme -s "API" src/**.js`,
         description: `regenerate the readme`
       },
       lint: {
@@ -88,10 +90,7 @@ module.exports = (name, overrides = {}) => {
       },
       test: {
         description: `run all tests with coverage`,
-        script: [
-          `jest src/*.spec.js --coverage`,
-          `--coveragePathIgnorePatterns test-helpers.js ${name}.js`
-        ].join(` `),
+        script: `jest src/*.spec.js --coverage ${name}.js`,
         unit: {
           description: `run unit tests`,
           script: `jest src/*.spec.js`
@@ -115,7 +114,7 @@ module.exports = (name, overrides = {}) => {
       },
       care: {
         description: `run all the things`,
-        script: allNPS(`lint`, `bundle`, `build`, `test`, `readme`, `dependencies`)
+        script: allNPS(`lint`, `build`, `bundle`, `test`, `readme`, `dependencies`)
       },
       precommit: `nps care`
     }, overrides)

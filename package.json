@@ -2,7 +2,7 @@
   "name": "germs",
   "version": "0.0.3",
   "description": "an opinionated build toolset that is dead-simple so you can focus on writing code",
-  "main": "lib/germs-builder.js",
+  "main": "index.js",
   "scripts": {
     "dependencies": "nps dependencies",
     "install": "npm run rebuild",
@@ -39,12 +39,13 @@
       "src"
     ],
     "coveragePathIgnorePatterns": [
-      "test-helpers.js"
+      "test-helpers.js",
+      "index.js"
     ],
     "mapCoverage": true,
     "moduleNameMapper": {
       "@app": "<rootDir>/src/index.js",
-      "@math/(.*)": "<rootDir>/src/math/$1.js"
+      "@tools/(.*)": "<rootDir>/src/tools/$1.js"
     },
     "moduleFileExtensions": [
       "js",
@@ -95,7 +96,7 @@
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-cleanup": "^1.0.1",
     "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-git-version": "^0.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-progress": "^0.4.0"
   }
