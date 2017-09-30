@@ -7,12 +7,16 @@ import resolve from 'rollup-plugin-node-resolve'
 import buble from 'rollup-plugin-buble'
 import version from 'rollup-plugin-git-version'
 
+const I = (x) => x
+
 /**
  * @function rollup
  * @param {Object} custom - configuration
  * @param {string} custom.name - name of project
  * @param {Object} custom.alias - aliases to use in the project
  * @param {Array} custom.external - an array of external dependencies
+ * @param {Function} custom.alterPlugins - an optional function which gets the plugins as input
+ * @param {Function} custom.customize - an optional function which allows you to alter all output
  * @returns {Object} config file for rollup
  * @example
  * const pkg = require(`../package.json`)
@@ -29,13 +33,13 @@ import version from 'rollup-plugin-git-version'
  *   external
  * })
  */
-export const rollup = ({name, alias, external}) => ({
+export const rollup = ({name, alias, external, alterPlugins = I, customize = I}) => customize({
   exports: `named`,
   external,
   globals: {
   },
   name,
-  plugins: [
+  plugins: alterPlugins([
     generateAlias(alias),
     progress(),
     version(),
@@ -56,7 +60,7 @@ export const rollup = ({name, alias, external}) => ({
     babili({
       // removeConsole: true
     })
-  ]
+  ])
 })
 
 export default rollup
@@ -67,6 +71,8 @@ export default rollup
  * @param {string} custom.name - name of project
  * @param {Object} custom.alias - aliases to use in the project
  * @param {Array} custom.external - an array of external dependencies
+ * @param {Function} custom.alterPlugins - an optional function which gets the plugins as input
+ * @param {Function} custom.customize - an optional function which allows you to alter all output
  * @param {string} custom.input - an input file
  * @param {Object} custom.output - an output object
  * @param {string} custom.output.file - an output file
@@ -93,8 +99,8 @@ export default rollup
  *   }
  * })
  */
-export const bundle = ({name, alias, external, input, output}) => {
-  return Object.assign({}, rollup({name, alias, external}), {
+export const bundle = ({name, alias, external, input, output, alterPlugins = I, customize = I}) => {
+  return Object.assign({}, rollup({name, alias, external, alterPlugins, customize}), {
     input,
     output
   })

@@ -1,7 +1,24 @@
 /* global test */
 import {version as v} from '../package.json'
-import {t} from './test-helpers'
-import {version, germs, rollup, bundle} from './index'
+import germs from './index'
+
+const {version, rollup, bundle, t} = germs
+
+test(`t should allow for simple ava-like assertions`, () => {
+  t.plan(2)
+  t.deepEqual(Object.keys(t), [
+    `plan`,
+    `is`,
+    `not`,
+    `deepEqual`,
+    `notDeepEqual`,
+    `truthy`,
+    `true`,
+    `falsy`,
+    `false`,
+    `throws`
+  ])
+})
 
 test(`version`, () => {
   t.is(typeof version, `string`)
@@ -58,7 +75,7 @@ test(`germs`, () => {
       },
       test: {
         description: `run all tests with coverage`,
-        script: `jest src/*.spec.js --coverage butts.js`,
+        script: `jest src/*.spec.js --coverage --coveragePathIgnorePatterns butts.js`,
         unit: {
           description: `run unit tests`,
           script: `jest src/*.spec.js`
@@ -118,7 +135,7 @@ const dropPlugins = (x) => {
 }
 
 test(`bundle`, () => {
-  t.plan(2)
+  t.plan(4)
   t.is(typeof bundle, `function`)
   const name = `butts`
   const alias = {
@@ -130,22 +147,40 @@ test(`bundle`, () => {
     file: `cool-output.js`,
     format: `cjs`
   }
+  const BASE_EXPECTATION = {
+    exports: `named`,
+    external,
+    globals: {
+    },
+    input,
+    name,
+    output,
+    plugins: []
+  }
   t.deepEqual(
     dropPlugins(
       bundle({name, alias, external, input, output})
     ),
     dropPlugins(
-      {
-        exports: `named`,
-        external,
-        globals: {
-        },
-        input,
-        name,
-        output,
-        plugins: []
-      }
+      BASE_EXPECTATION
     )
+  )
+  t.deepEqual(
+    bundle({
+      name,
+      alias,
+      external,
+      input,
+      output,
+      alterPlugins: () => ([])
+    }),
+    BASE_EXPECTATION
+  )
+  t.is(
+    bundle({
+      customize: () => `cool pants!`
+    }),
+    `cool pants!`
   )
 })
 

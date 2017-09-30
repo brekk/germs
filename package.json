@@ -2,11 +2,12 @@
   "name": "germs",
   "version": "0.0.4",
   "description": "an opinionated build toolset that is dead-simple so you can focus on writing code",
-  "main": "index.js",
+  "main": "germs.js",
   "scripts": {
     "dependencies": "nps dependencies",
     "install": "npm run rebuild",
     "rebuild": "babel src -d lib --ignore *.spec.js",
+    "rebundle": "rollup -c rollup/config.commonjs.js",
     "readme": "nps readme",
     "lint": "nps lint",
     "test": "nps test",
@@ -45,6 +46,7 @@
     "mapCoverage": true,
     "moduleNameMapper": {
       "@app": "<rootDir>/src/index.js",
+      "@testing/(.*)": "<rootDir>/src/testing/$1.js",
       "@tools/(.*)": "<rootDir>/src/tools/$1.js"
     },
     "moduleFileExtensions": [
