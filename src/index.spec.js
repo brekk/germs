@@ -5,7 +5,7 @@ import germs from './index'
 const {version, rollup, bundle, t} = germs
 
 test(`t should allow for simple ava-like assertions`, () => {
-  t.plan(2)
+  t.plan(20)
   t.deepEqual(Object.keys(t), [
     `plan`,
     `is`,
@@ -18,6 +18,27 @@ test(`t should allow for simple ava-like assertions`, () => {
     `false`,
     `throws`
   ])
+  t.is(typeof t.plan, `function`)
+  t.is(typeof t.is, `function`)
+  t.is(`identity`, `identity`)
+  t.is(typeof t.not, `function`)
+  t.not(`identity`, `not-identity`)
+  t.is(typeof t.deepEqual, `function`)
+  const butts = {a: 1, b: 2, c: 3}
+  t.deepEqual(butts, butts)
+  t.is(typeof t.notDeepEqual, `function`)
+  t.notDeepEqual({}, butts)
+  t.is(typeof t.truthy, `function`)
+  t.truthy(1)
+  t.is(typeof t.true, `function`)
+  t.true(true)
+  t.is(typeof t.falsy, `function`)
+  t.falsy(0)
+  t.is(typeof t.false, `function`)
+  t.false(false)
+  t.is(typeof t.throws, `function`)
+  const summary = `This is an error.`
+  t.throws(() => { throw new Error(summary) }, summary)
 })
 
 test(`version`, () => {
@@ -75,7 +96,10 @@ test(`germs`, () => {
       },
       test: {
         description: `run all tests with coverage`,
-        script: `jest src/*.spec.js --coverage --coveragePathIgnorePatterns butts.js`,
+        script: [
+          `jest src/*.spec.js --coverage`,
+          `--coveragePathIgnorePatterns butts.js node_modules/common-tags/*`
+        ].join(` `),
         unit: {
           description: `run unit tests`,
           script: `jest src/*.spec.js`

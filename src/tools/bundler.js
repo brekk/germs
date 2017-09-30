@@ -100,8 +100,8 @@ export default rollup
  * })
  */
 export const bundle = ({name, alias, external, input, output, alterPlugins = I, customize = I}) => {
-  return Object.assign({}, rollup({name, alias, external, alterPlugins, customize}), {
+  return customize(Object.assign({}, rollup({name, alias, external, alterPlugins, customize: I}), {
     input,
     output
-  })
+  }))
 }
