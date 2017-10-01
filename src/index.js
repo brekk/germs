@@ -1,13 +1,5 @@
-import {germs as builder} from '@tools/builder'
-import {rollup, bundle} from '@tools/bundler'
-import {t} from '@testing/helper'
-import {version} from '../package.json'
-
-/* eslint-disable fp/no-mutation */
-builder.rollup = rollup
-builder.bundle = bundle
-builder.version = version
-builder.t = t
-/* eslint-enable fp/no-mutation */
-
-module.exports = builder
+import * as pkg from '../package.json'
+export {build} from '@tools/builder'
+export {rollup, bundle} from '@tools/bundler'
+export {t} from '@testing/helper'
+export const {version} = pkg

@@ -1,8 +1,8 @@
 /* global test */
 import {version as v} from '../package.json'
-import germs from './index'
+import * as germs from './index'
 
-const {version, rollup, bundle, t} = germs
+const {version, rollup, bundle, t, build} = germs
 
 test(`t should allow for simple ava-like assertions`, () => {
   t.plan(20)
@@ -46,11 +46,11 @@ test(`version`, () => {
   t.is(version, v)
 })
 
-test(`germs`, () => {
+test(`build`, () => {
   t.plan(3)
-  t.is(typeof germs, `function`)
+  t.is(typeof build, `function`)
   /* eslint-disable max-len */
-  t.deepEqual(germs(`butts`), {
+  t.deepEqual(build(`butts`), {
     scripts: {
       dependencies: {
         script: `nps dependencies.graph.base && node node_modules/concurrently/src/main.js --kill-others-on-fail --prefix-colors "bgBlue.bold,bgMagenta.bold,bgGreen.bold" --prefix "[{name}]" --names "dependencies.graph.svg,dependencies.graph.dot,dependencies.graph.json" 'nps dependencies.graph.svg' 'nps dependencies.graph.dot' 'nps dependencies.graph.json'`,
@@ -114,8 +114,16 @@ test(`germs`, () => {
         }
       },
       bundle: {
-        description: `run the main bundle task`,
-        script: `rollup -c rollup/config.commonjs.js`
+        description: `generate bundles`,
+        script: `node node_modules/concurrently/src/main.js --kill-others-on-fail --prefix-colors "bgBlue.bold,bgMagenta.bold" --prefix "[{name}]" --names "bundle.commonjs,bundle.es6" 'nps bundle.commonjs' 'nps bundle.es6'`,
+        commonjs: {
+          description: `run the commonjs bundle task`,
+          script: `rollup -c rollup/config.commonjs.js`
+        },
+        es6: {
+          description: `run the es6 bundle task`,
+          script: `rollup -c rollup/config.es6.js`
+        }
       },
       build: {
         description: `convert files individually`,
@@ -129,7 +137,7 @@ test(`germs`, () => {
     }
   })
   /* eslint-disable max-len */
-  t.deepEqual(germs(`butts`, {
+  t.deepEqual(build(`butts`, {
     dependencies: `a`,
     readme: `b`,
     lint: `c`,
