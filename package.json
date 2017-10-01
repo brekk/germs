@@ -13,7 +13,7 @@
     "docs": "nps docs",
     "bundle": "nps bundle",
     "build": "nps build",
-    "postinstall": "npm run rebuild && npm run rebundle",
+    "prepare": "npm run rebuild && npm run rebundle",
     "precommit": "nps care"
   },
   "repository": {
