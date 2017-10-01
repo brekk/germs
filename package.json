@@ -5,6 +5,7 @@
   "main": "germs.js",
   "scripts": {
     "dependencies": "nps dependencies",
+    "prepublish": "nps care",
     "rebuild": "babel src -d lib --ignore *.spec.js",
     "rebundle": "rollup -c rollup/config.commonjs.js",
     "readme": "nps readme",
