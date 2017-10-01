@@ -15,7 +15,7 @@
     "build": "npm run rebuild && npm run rebundle",
     "precommit": "nps care",
     "install": "npm run build",
-    "prepublishOnly": "npm run build"
+    "preinstall": "npm run build"
   },
   "repository": {
     "type": "git",
