@@ -127,7 +127,7 @@ export const build = (name, overrides = {}) => {
       },
       care: {
         description: `run all the things`,
-        script: allNPS(`lint`, `build`, `bundle`, `test`, `readme`, `dependencies`)
+        script: series(`nps build`, `nps bundle`, allNPS(`lint`, `test`, `readme`, `dependencies`))
       },
       precommit: `nps care`
     }, overrides)

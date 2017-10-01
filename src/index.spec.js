@@ -131,7 +131,7 @@ test(`build`, () => {
       },
       care: {
         description: `run all the things`,
-        script: `node node_modules/concurrently/src/main.js --kill-others-on-fail --prefix-colors "bgBlue.bold,bgMagenta.bold,bgGreen.bold,bgBlack.bold,bgCyan.bold,bgRed.bold" --prefix "[{name}]" --names "lint,build,bundle,test,readme,dependencies" 'nps lint' 'nps build' 'nps bundle' 'nps test' 'nps readme' 'nps dependencies'`
+        script: `nps build && nps bundle && node node_modules/concurrently/src/main.js --kill-others-on-fail --prefix-colors "bgBlue.bold,bgMagenta.bold,bgGreen.bold,bgBlack.bold" --prefix "[{name}]" --names "lint,test,readme,dependencies" 'nps lint' 'nps test' 'nps readme' 'nps dependencies'`
       },
       precommit: `nps care`
     }
