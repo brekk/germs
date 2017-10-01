@@ -12,9 +12,9 @@
     "test": "nps test",
     "docs": "nps docs",
     "bundle": "nps bundle",
-    "build": "nps build",
-    "prepare": "npm run rebuild && npm run rebundle",
-    "precommit": "nps care",
+    "build": "npm run rebuild && npm run rebundle",
+    "prepare": "npm run build",
+    "precommit": "npm run build",
     "prepublish": "nps care"
   },
   "repository": {
