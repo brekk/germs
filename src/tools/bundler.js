@@ -5,7 +5,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import cleanup from 'rollup-plugin-cleanup'
 import resolve from 'rollup-plugin-node-resolve'
 import buble from 'rollup-plugin-buble'
-import version from 'rollup-plugin-git-version'
+import json from 'rollup-plugin-json'
+// import version from 'rollup-plugin-git-version'
 
 const I = (x) => x
 
@@ -33,7 +34,7 @@ const I = (x) => x
  *   external
  * })
  */
-export const rollup = ({name, alias, external, alterPlugins = I, customize = I}) => customize({
+export const rollup = ({name, alias, external = [], alterPlugins = I, customize = I}) => customize({
   exports: `named`,
   external,
   globals: {
@@ -42,7 +43,8 @@ export const rollup = ({name, alias, external, alterPlugins = I, customize = I})
   plugins: alterPlugins([
     generateAlias(alias),
     progress(),
-    version(),
+    // version(),
+    json(),
     commonjs({
       extensions: [`.js`],
       include: `node_modules/**`,
