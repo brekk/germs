@@ -132,7 +132,8 @@ const build = (name, overrides = {}) => {
         description: `run all the things`,
         script: series(`nps build`, `nps bundle`, allNPS(`lint`, `test`, `readme`, `dependencies`))
       },
-      precommit: `nps care`
+      precommit: `nps care`,
+      generate: series(`nps build`, `nps bundle`)
     }, overrides)
   }
   return NPS_COMMANDS

@@ -10,7 +10,9 @@
     "test": "nps test",
     "docs": "nps docs",
     "bundle": "nps bundle",
-    "build": "nps build",
+    "build": "nps generate",
+    "prepare": "npm run build",
+    "prepublish": "npm run build",
     "precommit": "nps care"
   },
   "repository": {
