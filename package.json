@@ -14,9 +14,8 @@
     "bundle": "nps bundle",
     "build": "npm run rebuild && npm run rebundle",
     "precommit": "nps care",
-    "prepare": "npm run build",
-    "preinstall": "npm run build",
-    "prepublish": "npm run build"
+    "install": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
