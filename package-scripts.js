@@ -1,4 +1,4 @@
 const {name} = require(`./package.json`)
-const bootstrap = require(`./germs`)
+const germs = require(`./germs`)
 
-module.exports = bootstrap(name)
+module.exports = germs.build(name)

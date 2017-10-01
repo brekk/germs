@@ -27,7 +27,7 @@ const DEPGRAPH = `dependency-graph.json`
 
 const madge = `madge --webpack-config webpack.config.js`
 
-export const germs = (name, overrides = {}) => {
+export const build = (name, overrides = {}) => {
   const NPS_COMMANDS = {
     scripts: Object.assign({
       dependencies: {
@@ -110,8 +110,16 @@ export const germs = (name, overrides = {}) => {
         }
       },
       bundle: {
-        description: `run the main bundle task`,
-        script: `rollup -c rollup/config.commonjs.js`
+        description: `generate bundles`,
+        script: allNPS(`bundle.commonjs`, `bundle.es6`),
+        commonjs: {
+          description: `run the commonjs bundle task`,
+          script: `rollup -c rollup/config.commonjs.js`
+        },
+        es6: {
+          description: `run the es6 bundle task`,
+          script: `rollup -c rollup/config.es6.js`
+        }
       },
       build: {
         description: `convert files individually`,
