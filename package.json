@@ -13,10 +13,9 @@
     "docs": "nps docs",
     "bundle": "nps bundle",
     "build": "npm run rebuild && npm run rebundle",
-    "prepare": "npm run build",
-    "preinstall": "npm run build",
     "precommit": "nps care",
-    "prepublish": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
