@@ -1,5 +1,7 @@
 const pkg = require(`../package.json`)
-const {bundle} = require(`../germs`)
+const germs = require(`../lib/index`)
+
+const {bundle} = germs
 
 const external = (
   pkg && pkg.dependencies ?
@@ -10,6 +12,7 @@ const external = (
 module.exports = bundle({
   name: pkg.name,
   alias: {
+    [`@testing`]: `./testing`,
     [`@tools`]: `./tools`
   },
   external,

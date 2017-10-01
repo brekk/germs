@@ -1,5 +1,6 @@
 const pkg = require(`../package.json`)
-const {rollup} = require(`../germs`)
+const germs = require(`../lib/index`)
+const {rollup} = germs
 
 const external = (
   pkg && pkg.dependencies ?
@@ -10,6 +11,7 @@ const external = (
 module.exports = rollup({
   name: pkg.name,
   alias: {
+    [`@testing`]: `./testing`,
     [`@tools`]: `./tools`
   },
   external

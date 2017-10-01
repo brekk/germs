@@ -5,6 +5,7 @@ module.exports = {
       `${__dirname}/node_modules`
     ],
     alias: {
+      "@testing": `${__dirname}/src/testing`,
       "@tools": `${__dirname}/src/tools`
     }
   }

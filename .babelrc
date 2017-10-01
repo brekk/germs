@@ -9,6 +9,7 @@
       "root": ["."],
       "alias": {
         "@app": "./src/index.js",
+        "@testing": "./src/testing",
         "@tools": "./src/tools"
       }
     }]

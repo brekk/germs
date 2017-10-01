@@ -90,7 +90,12 @@ export const germs = (name, overrides = {}) => {
       },
       test: {
         description: `run all tests with coverage`,
-        script: `jest src/*.spec.js --coverage ${name}.js`,
+        script: [
+          `jest src/*.spec.js --coverage`,
+          // not 100% why common-tags is showing up in the coverage tests, so ignore it for now
+          // TODO: figure out if this is needed later on
+          `--coveragePathIgnorePatterns ${name}.js node_modules/common-tags/*`
+        ].join(` `),
         unit: {
           description: `run unit tests`,
           script: `jest src/*.spec.js`
