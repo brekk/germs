@@ -5,7 +5,6 @@
   "main": "germs.js",
   "scripts": {
     "dependencies": "nps dependencies",
-    "prepublish": "npm run rebuild && npm run rebundle",
     "rebuild": "babel src -d lib --ignore *.spec.js",
     "rebundle": "rollup -c rollup/config.commonjs.js",
     "readme": "nps readme",
