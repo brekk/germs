@@ -7,7 +7,7 @@ const external = (
   pkg && pkg.dependencies ?
     Object.keys(pkg.dependencies) :
     []
-)
+).concat(`path`)
 
 module.exports = bundle({
   name: pkg.name,
