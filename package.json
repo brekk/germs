@@ -14,7 +14,8 @@
     "docs": "nps docs",
     "bundle": "nps bundle",
     "build": "nps build",
-    "precommit": "npm run rebuild && npm run rebundle && nps precommit"
+    "postinstall": "npm run rebuild && npm run rebundle",
+    "precommit": "nps care"
   },
   "repository": {
     "type": "git",
