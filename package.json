@@ -12,10 +12,10 @@
     "test": "nps test",
     "docs": "nps docs",
     "bundle": "nps bundle",
-    "build": "nps build",
-    "prepare": "npm run rebuild && npm run rebundle",
+    "build": "npm run rebuild && npm run rebundle",
+    "prepare": "npm run build",
     "precommit": "nps care",
-    "prepublishOnly": "nps care"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
