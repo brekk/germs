@@ -4,6 +4,8 @@
 
 # germs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/brekk/germs.svg)](https://greenkeeper.io/)
+
 an opinionated hack-space for building things fast without spending a bunch of time setting things up
 
 ## Installation
